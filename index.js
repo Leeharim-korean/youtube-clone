@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express();
+import express from "express"; //┐
+const app = express();        //─fist line is next gen JS and second thing is normal
 
 const PORT = 4000;
 
@@ -10,10 +10,8 @@ function handleListening() {
 function handleHome(req, res) {
     res.send("Hello from home!");
 }
-
-function handleProfile(req, res) {
-    res.send("You are on my profile");
-}
+//this is arrow function that is same thing with normal function
+const handleProfile = (req, res) => res.send("You are on my profile");
 
 app.get("/", handleHome);
 
