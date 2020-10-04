@@ -13,6 +13,13 @@ function handleHome(req, res) {
 //this is arrow function that is same thing with normal function
 const handleProfile = (req, res) => res.send("You are on my profile");
 
+const betweenHome = (req, res, next) => {
+    console.log("Between");
+    next();
+};
+
+app.use(betweenHome);
+
 app.get("/", handleHome);
 
 app.get("/profile", handleProfile);
