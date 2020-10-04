@@ -1,4 +1,8 @@
 import express from "express"; //┐
+import morgan from "morgan";  //
+import helmet from "helmet";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 const app = express();        //─fist line is next gen JS and second thing is normal
 
 const PORT = 4000;
@@ -18,6 +22,11 @@ const betweenHome = (req, res, next) => {
     next();
 };
 
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: ture }));
+app.use(helmet());
+app.use(morgan("dev"));
 app.use(betweenHome);
 
 app.get("/", handleHome);
