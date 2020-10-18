@@ -13,3 +13,5 @@ Cloneing youtube with VanliaJS and NodeJS(feat. nomadcoder)
 - [x] Upload
 - [ ] Video Detail
 - [x] Edit Video
+
+## Importance : If you use WSL, open a new terminal and type 'sudo mongod --dbpath ~/data/db'
