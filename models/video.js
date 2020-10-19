@@ -1,3 +1,4 @@
+import { text } from "body-parser";
 import mongoose from "mongoose";
 
 const VideoSchema = new mongoose.Schema({
@@ -7,7 +8,7 @@ const VideoSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: "Title is requried0"
+        required: "Title is requried"
     },
     description: String,
     views: {
@@ -16,7 +17,11 @@ const VideoSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
+    },
+    comment: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
     }
 });
 
