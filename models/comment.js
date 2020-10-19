@@ -11,5 +11,5 @@ const CommentSchema = new mongoose.Schema({
     }
 })
 
-const model = mongoose.model("Comment", CommentSchma);
+const model = mongoose.model("Comment", CommentSchema);
 export default model;

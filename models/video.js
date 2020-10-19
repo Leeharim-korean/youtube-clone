@@ -1,4 +1,3 @@
-import { text } from "body-parser";
 import mongoose from "mongoose";
 
 const VideoSchema = new mongoose.Schema({
@@ -25,5 +24,5 @@ const VideoSchema = new mongoose.Schema({
     }
 });
 
-const model = mongoose.model("Video", VideoSchma);
+const model = mongoose.model("Video", VideoSchema);
 export default model;

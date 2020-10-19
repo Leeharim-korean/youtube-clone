@@ -1,7 +1,15 @@
 import routes from "../routes"
+import Video from "../models/video"
 
-export const home = (req, res) => {
-    res.render("home", { pageTitle: "Home", videos });
+export const home = async (req, res) => {
+    try {
+        const videos = await Video.find({});
+        //do not render before part of await
+        res.render("home", { pageTitle: "Home", videos });
+    } catch (error) {
+        res.render("home", { pageTitle: "Home", videos: [] });
+    }
+    //becaues NodeJs doesn't work when occured error, use try and catch 
 };
 export const search = (req, res) => {
     const {
