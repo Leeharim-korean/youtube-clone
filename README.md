@@ -18,5 +18,8 @@ Cloneing youtube with VanliaJS and NodeJS(feat. nomadcoder)
 
 ## Use Mongo DB :
 - use <db_name> : set current database
-- show collections : show collections in current database
+- show collections : show collections in current(set) database
 - db.<db_name>.remove({})
+
+## TO check later
+- [ ]assemble video.videoBlock__thumbnail(videoBlock) and video(videoDetail)
