@@ -13,12 +13,20 @@ export const home = async (req, res) => {
     //becaues NodeJs doesn't work when occured error, use try and catch
 };
 
-export const search = (req, res) => {
+export const search = async (req, res) => {
     const {
         query: { term: searchingFor },
     } = req;
     //const searchingFor = req.query.term;
-    res.render("search", { pageTitle: "Search", searchingFor });
+    let videos = [];
+    try {
+        videos = await Video.find({ title: { $regex: searchingFor, $options: "i" } });
+        // $regex(regular express : include)
+        // $option: "i" : insensitive(don't care capital or small)
+    } catch (error) {
+        console.log(error);
+    }
+    res.render("search", { pageTitle: "Search", searchingFor, videos });
 };
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });
