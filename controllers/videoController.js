@@ -3,10 +3,11 @@ import Video from "../models/video";
 
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find.sort({ _id: -1 });
+        const videos = await Video.find({}).sort({ _id: -1 });
         //do not render before part of await
         res.render("home", { pageTitle: "Home", videos });
     } catch (error) {
+        console.log(error);
         res.render("home", { pageTitle: "Home", videos: [] });
     }
     //becaues NodeJs doesn't work when occured error, use try and catch
@@ -43,6 +44,7 @@ export const videoDetail = async (req, res) => {
         const video = await Video.findById(id);
         res.render("videoDetail", { pageTitle: video.title, video });
     } catch (error) {
+        console.log(error);
         res.redirect(routes.home);
     }
 };
@@ -55,6 +57,7 @@ export const getEditVideo = async (req, res) => {
         const video = await Video.findById(id);
         res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
     } catch (error) {
+        console.log(error);
         res.redirect(routes.home);
     }
 };
@@ -68,6 +71,7 @@ export const postEditVideo = async (req, res) => {
         await Video.findOneAndUpdate({ _id: id }, { title, description });
         res.redirect(routes.videoDetail(id));
     } catch (error) {
+        console.log(error);
         res.redirect(routes.home);
     }
 };
