@@ -4,8 +4,9 @@
   "description": "Cloning Youtube with VanliaJS ans NodeJS",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon --exec init.js --delay 2",
-    "dev:assets":"webpack"
+    "dev:server": "nodemon --exec bable-node init.js --delay 2",
+    "dev:assets": "WEBPACK_ENV=development webpack",
+    "build:assets": "WEBPACK_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "helmet": "^4.1.1",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0",
