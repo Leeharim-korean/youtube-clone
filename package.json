@@ -4,8 +4,8 @@
   "description": "Cloning Youtube with VanliaJS ans NodeJS",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon --exec bable-node init.js --delay 2",
-    "dev:assets": "WEBPACK_ENV=development webpack",
+    "dev:server": "nodemon --exec babel-node init.js --delay 2",
+    "dev:assets": "WEBPACK_ENV=development webpack -w",
     "build:assets": "WEBPACK_ENV=production webpack"
   },
   "repository": {
@@ -20,7 +20,9 @@
   "homepage": "https://github.com/Leeharim-korean/youtube-clone#readme",
   "dependencies": {
     "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.12.1",
     "autoprefixer": "^10.0.1",
+    "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "css-loader": "^5.0.0",
