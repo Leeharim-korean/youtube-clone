@@ -1,5 +1,6 @@
 const path = require("path"); // import path from "path"(same thing but webpack can understand es6 js)
-const ExtractCSS = require("extract-text-webpack-plugin");
+const autoprefixer = require("autoprefixer");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
@@ -9,27 +10,42 @@ const config = {
     entry: ENTRY_FILE,
     mode: MODE,
     module: {
-        rules:[
+        rules: [
             {
                 test: /\.(scss)$/,
-                use: ExtractCSS.extract([
+                use: [
                     {
-                        loader: "css-loader",
+                      loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                      loader: "css-loader",
                     },
                     {
                         loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        autoprefixer,
+                                        { browsers: "cover 99.5%" },
+                                    ],
+                                ],
+                            },
+                        },
                     },
                     {
-                        loader: "scss-loader",
+                      loader: "sass-loader",
                     },
-                ]),
+                  ],
             },
         ],
     },
     output: {
         path: OUTPUT_DIR,
-        filename: "[name].[format]",
+        filename: "[name].js",
     },
+    plugins: [new MiniCssExtractPlugin({ filename: "styles.css" }),
+    ],
 };
 
 module.exports = config;
