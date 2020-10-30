@@ -192,7 +192,6 @@ input {
       justify-self: end; }
     .header .header__wrapper .header__column ul {
       display: flex;
-      color: white;
       font-weight: 600;
       text-transform: uppercase; }
       .header .header__wrapper .header__column ul a {
