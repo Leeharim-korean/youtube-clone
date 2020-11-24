@@ -1,5 +1,5 @@
 import routes from "../routes";
-import Video from "../models/Video";
+import Video from "../models/video";
 
 export const home = async (req, res) => {
     try {
