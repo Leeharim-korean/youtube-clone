@@ -109,6 +109,7 @@ export const userDetail = async (req, res) => {
     const { params: { id } } = req;
     try {
         const user = await User.findById(id);
+        console.log(user);
         res.render("userDetail", { pageTitle: "User Detail", user });
     } catch (error) {
         res.redirect(routes.home);
