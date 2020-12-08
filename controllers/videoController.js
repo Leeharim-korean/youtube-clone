@@ -1,5 +1,5 @@
 import routes from "../routes";
-import Video from "../models/video";
+import Video from "../models/Video";
 
 export const home = async (req, res) => {
     try {
@@ -29,7 +29,9 @@ export const search = async (req, res) => {
     res.render("search", { pageTitle: "Search", searchingFor, videos });
 };
 
-export const getUpload = (req, res) => res.render("upload", { pageTitle: "Upload" });
+export const getUpload = (req, res) => {
+    res.render("upload", { pageTitle: "Upload" });
+};
 
 export const postUpload = async (req, res) => {
     const {
@@ -65,7 +67,7 @@ export const getEditVideo = async (req, res) => {
     } = req;
     try {
         const video = await Video.findById(id);
-        if (video.creator !== req.user.id) {
+        if (video.creator.id !== req.user.id) {
             throw Error();
         } else {
             res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });

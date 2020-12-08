@@ -1,10 +1,11 @@
+import "@babel/polyfill";
 import "./db";
 import dotenv from "dotenv";
 import app from "./app";
 
-import "./models/video";
-import "./models/comment";
-import "./models/user";
+import "./models/Video";
+import "./models/Comment";
+import "./models/User";
 
 dotenv.config();
 

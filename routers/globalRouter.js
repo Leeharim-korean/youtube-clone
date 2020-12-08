@@ -32,8 +32,8 @@ globalRouter.get(
 
   globalRouter.get(routes.facebook, facebookLogin);
   globalRouter.get(
-    routes.githubCallback,
-    passport.authenticate("github", { failureRedirect: "/login" }),
+    routes.facebookCallback,
+    passport.authenticate("facebook", { failureRedirect: "/login" }),
     postFacebookLogin,
   );
 

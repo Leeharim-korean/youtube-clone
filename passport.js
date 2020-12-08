@@ -1,7 +1,7 @@
 import passport from "passport";
 import GithubStrategy from "passport-github";
 import FacebookStrategy from "passport-facebook";
-import User from "./models/user";
+import User from "./models/User";
 import {
   githubLoginCallback,
   facebookLoginCallback,
@@ -27,7 +27,7 @@ passport.use(
         clientID: process.env.FB_ID,
         clientSecret: process.env.FB_SECRET,
         callbackURL: `http://localhost:4000${routes.facebookCallback}`,
-        profileFields: ['id', 'displayName', 'photos', 'email'],
+        profileFields: ["id", "displayName", "photos", "email"],
         scope: ["public_profile", "email"],
       },
       facebookLoginCallback,
@@ -37,6 +37,6 @@ passport.use(
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => {
-  done(err, user);
+    done(err, user);
   });
-  });
+});
