@@ -20,4 +20,7 @@ module.exports = {
 	quotes: 'off',
 	"linebreak-style": 'off',
 	},
+	env: {
+		browser: true,
+	},
 };
